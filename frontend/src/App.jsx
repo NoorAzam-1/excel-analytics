@@ -49,7 +49,6 @@ function App() {
         <Route path="/settings" element={<Settings />} />
       </Route>
 
-      {/* Fallback (404) */}
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>
   );

@@ -29,7 +29,6 @@ export const verifyToken = (allowedRoles = []) => {
 };
 
 export const isAdmin = (req, res, next) => {
-  console.log('isAdmin called with req.user:', req.user);
   if (!req.user) {
     return res.status(401).json({ message: 'Unauthorized: No user info' });
   }

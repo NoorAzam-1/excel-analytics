@@ -15,9 +15,7 @@ const Home = () => {
   return (
     <>
     <div className="min-h-screen bg-gray-950 text-white font-sans flex flex-col">
-      {/* Hero Section */}
       <section className="relative overflow-hidden py-48">
-        {/* Background Gradient & Blob */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-2/3 h-2/3 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"></div>
           <div className="absolute bottom-0 right-0 w-2/3 h-2/3 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow animation-delay-2000"></div>

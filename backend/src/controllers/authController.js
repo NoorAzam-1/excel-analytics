@@ -125,7 +125,6 @@ export const updateProfile = async (req, res) => {
 
 export const changePassword = async (req, res) => {
   const { oldpassword: oldPassword, newpassword: newPassword } = req.body;
-  console.log(oldPassword, newPassword);
 
   if (!oldPassword || !newPassword)
     return res.status(400).json({ message: "Old and new password required" });

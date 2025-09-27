@@ -203,7 +203,6 @@ const UploadWithChart = () => {
     // Fetch AI insights (best effort)
     setGeneratingInsights(true);
     try {
-      // Send only relevant columns to reduce payload size
       const sampleRows = rows.slice(0, 50).map((row) => [row[xi], row[yi]]);
       const res = await axios.post("/ai/insights", {
         headers: [xAxis, yAxis],

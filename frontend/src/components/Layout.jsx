@@ -28,7 +28,6 @@ const Layout = () => {
       try {
         const res = await axios.get("/auth/me");
         setUser(res.data?.name);
-        console.log("me", res.data);
       } catch (err) {
         console.error("Failed to fetch user profile:", err);
       }

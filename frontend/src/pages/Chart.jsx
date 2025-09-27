@@ -115,7 +115,6 @@ const Chart = () => {
 
     setChartData(data);
 
-    // Save to history
     axios
       .post("/data/history", {
         fileName: filename,
@@ -195,16 +194,13 @@ const Chart = () => {
 
         {/* Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Sidebar */}
           <div className="lg:col-span-1 space-y-8">
-            {/* Settings Panel */}
             <div className="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700">
               <h2 className="text-2xl font-bold mb-4 flex items-center text-gray-200">
                 <FiCode className="mr-2 text-blue-400" />
                 Chart Settings
               </h2>
 
-              {/* File Input */}
               <div className="mb-4">
                 <label className="text-sm font-medium text-gray-300 mb-1 block">
                   File Name

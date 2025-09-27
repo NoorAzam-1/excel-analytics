@@ -105,7 +105,6 @@ const Settings = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950">
       <div className="w-full max-w-6xl rounded-3xl p-8 lg:p-12 bg-slate-900 shadow-2xl space-y-12 animate-fade-in-up">
-        {/* Profile Header */}
         <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-8 md:space-y-0 md:space-x-12 pb-6 border-b border-slate-800">
           <div className="flex-shrink-0 relative w-36 h-36 rounded-full overflow-hidden shadow-xl border-4 border-indigo-500/50 transform transition-transform hover:scale-105">
             <div className="w-full h-full flex items-center justify-center bg-slate-800 text-slate-400 text-7xl font-extrabold">
@@ -125,7 +124,6 @@ const Settings = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {/* Update Details Form */}
           <div className="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700">
             <h4 className="text-2xl font-semibold text-white mb-6">
               Update Details

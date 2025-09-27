@@ -33,7 +33,6 @@ const UserHistory = () => {
         });
 
         setHistoryData(Array.from(uniqueMap.values()));
-        console.log("history", res.data);
       } catch (err) {
         console.error("Error fetching history:", err);
       } finally {

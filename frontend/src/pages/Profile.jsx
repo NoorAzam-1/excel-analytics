@@ -18,7 +18,6 @@ const Profile = () => {
         setUserEmail((e) => res.data.email || e);
         setRole(res.data.role || "");
         setLoading(false);
-        console.log(res.data);
       } catch (err) {
         toast.error(err.response?.data?.message || "Failed to load profile.");
         setLoading(false);
@@ -144,7 +143,6 @@ const Profile = () => {
                 </form>
               </div>
 
-              {/* Change Password Form */}
               <div className="bg-slate-950 p-6 rounded-2xl border border-gray-700">
                 <h4 className="text-xl font-semibold text-white mb-4">
                   Change Password

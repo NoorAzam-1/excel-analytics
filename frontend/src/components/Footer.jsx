@@ -7,7 +7,7 @@ const Footer = () => (
       <p className="text-lg mb-8 max-w-2xl mx-auto text-white/70">
         Unlock the full potential of your business with our cutting-edge analytics solutions.
       </p>
-      <a href="#" className="inline-block px-8 py-3 rounded-full text-white font-semibold bg-gray-700 hover:bg-gray-600 transition-colors">
+      <a href="/" className="inline-block px-8 py-3 rounded-full text-white font-semibold bg-gray-700 hover:bg-gray-600 transition-colors">
         Get Started
       </a>
       <hr className="mt-12 mb-6 border-white/20 max-w-sm mx-auto" />

@@ -6,14 +6,13 @@ const seedAdmin = async () => {
   const adminPassword = process.env.ADMIN_PASSWORD;
 
   if (!adminEmail || !adminPassword) {
-    console.warn('⚠️ ADMIN_EMAIL or ADMIN_PASSWORD not set in .env');
+    console.warn(' ADMIN_EMAIL or ADMIN_PASSWORD not set in .env');
     return;
   }
 
   const existingAdmin = await User.findOne({ useremail: adminEmail });
 
   if (existingAdmin) {
-    console.log('ℹ️ Admin user already exists');
     return;
   }
 
@@ -28,7 +27,6 @@ const seedAdmin = async () => {
   });
 
   await newAdmin.save();
-  console.log('✅ Admin user created');
 };
 
 export default seedAdmin;

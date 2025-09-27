@@ -274,7 +274,6 @@ const AdminDashboard = () => {
                   ))}
                 </tbody>
               </table>
-              {/* Pagination */}
               <div className="flex justify-between items-center py-4 px-6 bg-slate-800 rounded-b-2xl">
                 <p className="text-slate-400 text-sm">
                   Showing {paginatedUsers.length} of {filteredUsers.length} users

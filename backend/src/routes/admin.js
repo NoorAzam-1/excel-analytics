@@ -26,8 +26,6 @@ router.put("/settings", verifyToken(["admin"]), async (req, res) => {
   try {
     const { username, useremail } = req.body;
 
-    console.log("Updating user:", userId, username, useremail);
-
     if (!username || !useremail) {
       return res.status(400).json({ message: "Missing required fields." });
     }

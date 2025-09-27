@@ -26,10 +26,7 @@ export const getStats = async (req, res) => {
         : "N/A";
 
     res.json({
-      // totalUsers: userCount,
-      // totalUploads: historyCount,
-      // mostUsedChart,
-      totalUsers: userCount,
+           totalUsers: userCount,
       activeUsers,
       blockedUsers,
       totalUploads: historyCount,
@@ -52,7 +49,6 @@ export const getUsers = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    console.log("DELETE CALLED WITH ID:", req.params.id);
 
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: "Invalid user ID" });
