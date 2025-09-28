@@ -72,11 +72,11 @@ const Profile = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full space-y-8 animate-fade-in-up">
+      <div className="w-full space-y-4 md:space-y-8 animate-fade-in-up">
         <h1 className="text-4xl font-bold text-white tracking-tight">
           Profile Settings
         </h1>
-        <div className="bg-slate-900 p-8 rounded-3xl shadow-2xl border border-gray-700">
+        <div className="bg-slate-900 p-4 md:p-8 rounded-3xl shadow-2xl border border-gray-700">
           <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
             <div className="flex-shrink-0 relative w-32 h-32 rounded-full overflow-hidden shadow-xl border-4 border-pink-500">
               <div className="w-full h-full flex items-center justify-center bg-pink-700 text-gray-400 text-6xl font-extrabold">

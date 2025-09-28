@@ -15,14 +15,14 @@ const Home = () => {
   return (
     <>
     <div className="min-h-screen bg-gray-950 text-white font-sans flex flex-col">
-      <section className="relative overflow-hidden py-48">
+      <section className="relative overflow-hidden pt-26 pb-4 md:py-48">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-2/3 h-2/3 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"></div>
           <div className="absolute bottom-0 right-0 w-2/3 h-2/3 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow animation-delay-2000"></div>
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-6 flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 space-y-6 md:space-y-10 mb-16 md:mb-0 text-center md:text-left">
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
               Unlock the <span className="text-pink-400">Power</span><br /> of Your Data
@@ -57,12 +57,12 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="bg-gray-800 rounded-t-[5rem] shadow-2xl py-24 px-6 relative z-20">
+      <section className="bg-gray-800 md:rounded-t-[5rem] shadow-2xl pt-6 px-2 md:py-24 md:px-6 relative z-20">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl sm:text-5xl font-extrabold mb-16 tracking-tight text-white">
             Features You'll Love
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12">
             <FeatureCard
               icon={<FaFileUpload />}
               title="Easy Upload"

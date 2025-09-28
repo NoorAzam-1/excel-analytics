@@ -228,12 +228,12 @@ const UploadWithChart = () => {
     !generatingInsights;
 
   return (
-    <div className="max-w-6xl mx-auto p-6 lg:p-10">
-      <div className="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl text-gray-100">
-        <h1 className="text-4xl font-extrabold mb-4 drop-shadow-md">
+    <div className="max-w-5xl mx-auto lg:p-10">
+      <div className="bg-gray-800 rounded-md md:rounded-3xl p-3 md:p-12 shadow-2xl text-gray-100">
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-4 drop-shadow-md">
           Upload & Visualize Data
         </h1>
-        <p className="text-lg text-gray-400 mb-8">
+        <p className="text-lg text-gray-400 mb-6">
           Choose a file, then configure your chart and get insights + save
           options.
         </p>

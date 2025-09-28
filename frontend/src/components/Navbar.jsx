@@ -50,7 +50,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-50 top-0 left-0 lg:px-22 bg-white/10 backdrop-blur-md shadow-lg transition-all duration-300">
-      <div className="container mx-auto px-6 py-1 flex justify-between items-center">
+      <div className="container mx-auto px-3 md:px-6 py-1 flex justify-between items-center">
         <Link to="/" className="font-extrabold text-2xl tracking-wide text-white hover:text-pink-400 transition">
           <img src='/excelLogo.svg' alt="logo" className='h-18' />        </Link>
 
