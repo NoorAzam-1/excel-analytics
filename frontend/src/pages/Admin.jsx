@@ -10,7 +10,7 @@ import {
   FiInfo,
   FiLoader,
 } from "react-icons/fi";
-import exportToCSV from "../../utils/exportToCsv";
+import exportToCSV from "../../utils/exportToCSV";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
