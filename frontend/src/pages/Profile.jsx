@@ -69,16 +69,16 @@ const Profile = () => {
     }
   };
   if (loading) return <div className="text-white p-6">Loading profile...</div>;
-
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
   return (
     <div className="w-full">
       <div className="w-full space-y-4 md:space-y-8 animate-fade-in-up">
         <h1 className="text-4xl font-bold text-white tracking-tight">
           Profile Settings
         </h1>
-        <div className="bg-slate-900 p-4 md:p-8 rounded-3xl shadow-2xl border border-gray-700">
-          <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
-            <div className="flex-shrink-0 relative w-32 h-32 rounded-full overflow-hidden shadow-xl border-4 border-pink-500">
+        <div className="bg-slate-900 p-4 md:p-8 rounded sm:rounded-3xl shadow-2xl border border-gray-700">
+          <div className="flex flex-col items-center justify-center lg:items-start space-y-6 md:space-y-0 md:space-x-8">
+            <div className="flex-shrink-0 mx-auto relative w-32 h-32 rounded-full overflow-hidden shadow-xl border-4 border-pink-500">
               <div className="w-full h-full flex items-center justify-center bg-pink-700 text-gray-400 text-6xl font-extrabold">
                 {useremail ? useremail.charAt(0).toUpperCase() : "?"}
               </div>
@@ -86,12 +86,12 @@ const Profile = () => {
             </div>
 
             <div className="flex-grow w-full space-y-8 mt-6 md:mt-0">
-              <div>
-                <h3 className="text-3xl font-bold text-white mb-1">
-                  {username}
+              <div className="flex flex-col justify-center items-center lg:items-center">
+                <h3 className="text-4xl font-bold text-white mb-1">
+                  {username ? capitalize(username) : "Loading..."}     
                 </h3>
                 <p className="text-gray-400">{useremail}</p>
-                <span className="mt-2 inline-block px-4 py-1 text-sm font-semibold bg-pink-600 text-white rounded-full">
+                <span className="mt-2 inline-block px-4 py-1 text-lg font-semibold bg-pink-600 text-white rounded-lg">
                   {role || "User"}
                 </span>
               </div>

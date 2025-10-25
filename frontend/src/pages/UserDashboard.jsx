@@ -23,17 +23,16 @@ const UserDashboard = () => {
   return (
     <>
       <div className="">
-        <h1 className="text-4xl lg:text-4xl font-bold mb-4 text-white  drop-shadow-md">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white  drop-shadow-md">
           UserDashboard
         </h1>
         <p className="text-lg text-gray-400 ">
           Welcome back! Here's a quick overview of your Excel Analytics tools.
         </p>
       </div>
-      <main className="flex-1  py-8">
-        <div className="mx-auto max-w-7xl">
-          {/* Your UserDashboard cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <main className="flex-1 py-8">
+        <div className="mx-auto w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
             <DashboardCard
               to="/upload"
               icon={<FiUploadCloud />}

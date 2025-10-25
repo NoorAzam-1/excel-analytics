@@ -45,7 +45,6 @@ const AIInsights = () => {
   return (
     <div className="max-w-7xl mx-auto p-6 md:p-10">
       <div className="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl">
-        {/* Header */}
         <div className="text-center mb-12">
           <FiCpu className="text-pink-500 mx-auto mb-4" size={64} />
           <h1 className="text-4xl lg:text-5xl font-extrabold text-white tracking-tight drop-shadow-md">
@@ -59,7 +58,6 @@ const AIInsights = () => {
           </p>
         </div>
 
-        {/* AI Output */}
         {loading ? (
           <div className="flex justify-center items-center text-gray-400 py-12">
             <FiLoader className="animate-spin text-2xl mr-3" />
@@ -76,7 +74,6 @@ const AIInsights = () => {
           </div>
         )}
 
-        {/* CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
           <Link
             to="/upload"

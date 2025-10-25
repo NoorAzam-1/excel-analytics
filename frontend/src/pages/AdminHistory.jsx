@@ -72,7 +72,7 @@ const AdminHistory = () => {
   };
 
   return (
-    <div className="">
+    <div className="p-3">
       <h1 className="text-3xl font-bold mb-6 text-gray-100">
         Admin Upload History Dashboard
       </h1>

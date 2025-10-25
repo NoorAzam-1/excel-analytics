@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { FiSave, FiLock } from "react-icons/fi";
 import axios from "../services/api";
@@ -17,6 +17,7 @@ const Settings = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get("/auth/me");
+        {console.log(res)}
         setUsername(res.data.name);
         setUseremail(res.data.email);
         setRole(res.data.role);
@@ -104,7 +105,7 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950">
-      <div className="w-full max-w-6xl rounded-3xl p-8 lg:p-12 bg-slate-900 shadow-2xl space-y-12 animate-fade-in-up">
+      <div className="w-full max-w-6xl sm:rounded-3xl p-4 lg:p-12 bg-slate-900 shadow-2xl space-y-12 animate-fade-in-up">
         <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left space-y-8 md:space-y-0 md:space-x-12 pb-6 border-b border-slate-800">
           <div className="flex-shrink-0 relative w-36 h-36 rounded-full overflow-hidden shadow-xl border-4 border-indigo-500/50 transform transition-transform hover:scale-105">
             <div className="w-full h-full flex items-center justify-center bg-slate-800 text-slate-400 text-7xl font-extrabold">
@@ -123,8 +124,8 @@ const Settings = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          <div className="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-700">
             <h4 className="text-2xl font-semibold text-white mb-6">
               Update Details
             </h4>
@@ -160,19 +161,18 @@ const Settings = () => {
                   className="w-full px-5 py-3 bg-slate-950 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors"
                   placeholder="Enter your email"
                 />
-              </div>
+              </div>   
               <button
                 type="submit"
-                className="flex items-center justify-center w-full px-8 py-3 mt-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-lg font-bold transition-all duration-300 transform hover:-translate-y-1"
+                className="flex items-center justify-center gap-4 w-full px-6 py-3 mt-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-lg font-bold transition-all duration-300 transform hover:-translate-y-1"
               >
-                <FiSave className="mr-2" size={20} />
+                <FiSave size={20} />
                 Save Changes
               </button>
             </form>
           </div>
 
-          {/* Change Password Form */}
-          <div className="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700">
+          <div className="bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-700">
             <h4 className="text-2xl font-semibold text-white mb-6">
               Change Password
             </h4>
@@ -209,9 +209,9 @@ const Settings = () => {
               </div>
               <button
                 type="submit"
-                className="flex items-center justify-center w-full px-8 py-3 mt-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-lg font-bold transition-all duration-300 transform hover:-translate-y-1"
+                className="flex items-center justify-center gap-4 w-full px-6 py-3 mt-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-lg font-bold transition-all duration-300 transform hover:-translate-y-1"
               >
-                <FiLock className="mr-2" size={20} />
+                <FiLock size={20} />
                 Change Password
               </button>
             </form>
@@ -220,7 +220,7 @@ const Settings = () => {
 
         {/* Admin Role Management Section */}
         {role === "admin" && users.length > 0 && (
-          <div className="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 mt-12">
+          <div className="bg-slate-800 p-4 rounded-2xl shadow-lg border border-slate-700 mt-12">
             <h4 className="text-2xl font-semibold text-white mb-6">
               User Role Management
             </h4>
@@ -245,7 +245,7 @@ const Settings = () => {
                       id={`role-${user._id}`}
                       value={user.role}
                       onChange={(e) => updateUserRole(user._id, e.target.value)}
-                      className="bg-slate-950 text-white px-4 py-2 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      className="bg-slate-950 ml-2 text-white px-4 py-1 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     >
                       <option value="user">User</option>
                       <option value="admin">Admin</option>

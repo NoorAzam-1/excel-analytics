@@ -28,14 +28,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-950 text-white">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-fuchsia-600 rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-blob"></div>
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-blob animation-delay-4000"></div>
-      </div>
-
-      <div className="relative z-10 w-full max-w-md p-8 bg-gray-900 rounded-2xl shadow-2xl backdrop-blur-sm border border-gray-800">
+    <div className="flex items-center justify-center  h-full pt-20 pb-6 sm:pt-0 sm:pb-0 sm:min-h-screen bg-gray-950 text-white">
+      <div className="relative z-10 w-full max-w-md my-16 md:my-0 p-4 sm:p-8 bg-gray-900 rounded-2xl shadow-2xl backdrop-blur-sm border border-gray-800">
         <h1 className="text-3xl font-extrabold mb-2 text-center text-white drop-shadow-lg">
           Welcome Back
         </h1>
@@ -62,7 +56,7 @@ const Login = () => {
           />
           <button
             type="submit"
-            className="w-full bg-pink-600 text-white py-4 rounded-xl font-semibold shadow-lg hover:bg-pink-700 transition transform hover:-translate-y-1"
+            className="w-full bg-pink-600 text-white py-4 rounded-xl font-semibold shadow-lg hover:bg-pink-700 transition transform hover:-translate-y-1 cursor-pointer"
           >
             Login
           </button>
@@ -70,7 +64,7 @@ const Login = () => {
 
         <p className="mt-6 text-center text-sm text-gray-400">
           Don't have an account?{" "}
-          <Link to="/register" className="text-pink-500 hover:underline">
+          <Link to="/register" className="text-pink-500 hover:underline cursor-pointer">
             Register now
           </Link>
         </p>

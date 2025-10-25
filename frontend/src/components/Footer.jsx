@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="mt-auto pt-20 pb-12 text-center text-white/90 bg-gradient-to-br from-gray-900 via-zinc-900 to-gray-950 select-none">
+  <footer className="mt-auto py-9  md:pt-20 md:pb-12 text-center text-white/90 bg-gradient-to-br from-gray-900 via-zinc-900 to-gray-950 select-none">
     <div className="container mx-auto px-4">
       <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">Ready to elevate your data?</h2>
       <p className="text-lg mb-8 max-w-2xl mx-auto text-white/70">

@@ -192,7 +192,6 @@ const Chart = () => {
           </p>
         </div>
 
-        {/* Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 space-y-8">
             <div className="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700">
@@ -220,7 +219,6 @@ const Chart = () => {
                 )}
               </div>
 
-              {/* Axis & Chart Type Selectors */}
               {columns.length > 0 && (
                 <>
                   <div>
@@ -275,7 +273,6 @@ const Chart = () => {
               )}
             </div>
 
-            {/* AI Insight Panel */}
             <div className="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700">
               <h2 className="text-2xl font-bold mb-4 flex items-center text-gray-200">
                 <FaRobot className="mr-2 text-green-500" />
@@ -296,7 +293,6 @@ const Chart = () => {
             </div>
           </div>
 
-          {/* Main Panel - Chart */}
           <div className="lg:col-span-2 space-y-8">
             <div className="bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700">
               <h2 className="text-2xl font-bold text-gray-200 mb-6 flex items-center">
@@ -313,7 +309,6 @@ const Chart = () => {
                 </button>
               </div>
 
-              {/* Chart Output */}
               {chartData && (
                 <>
                   <div

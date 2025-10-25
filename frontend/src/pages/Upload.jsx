@@ -160,11 +160,9 @@ const UploadWithChart = () => {
     const xi = columns.indexOf(xAxis);
     const yi = columns.indexOf(yAxis);
 
-    // Extract labels (X axis) and data (Y axis)
     const labels = rows.map((r) => r[xi]);
     const dataValues = rows.map((r) => Number(r[yi]) || 0);
 
-    // Determine colors for pie/doughnut charts
     const backgroundColor = ["pie", "doughnut"].includes(chartType)
       ? getColorPalette(labels.length)
       : "rgba(129,164,240,0.8)";
@@ -200,7 +198,6 @@ const UploadWithChart = () => {
       console.error("History saving failed", e);
     }
 
-    // Fetch AI insights (best effort)
     setGeneratingInsights(true);
     try {
       const sampleRows = rows.slice(0, 50).map((row) => [row[xi], row[yi]]);
@@ -228,7 +225,7 @@ const UploadWithChart = () => {
     !generatingInsights;
 
   return (
-    <div className="max-w-5xl mx-auto lg:p-10">
+    <div className="max-w-6xl mx-auto">
       <div className="bg-gray-800 rounded-md md:rounded-3xl p-3 md:p-12 shadow-2xl text-gray-100">
         <h1 className="text-3xl md:text-4xl font-extrabold mb-4 drop-shadow-md">
           Upload & Visualize Data

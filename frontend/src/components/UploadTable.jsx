@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../services/api";
+import { FiFileText, FiChevronDown, FiChevronUp, FiDownload, FiEye } from "react-icons/fi";
 
 const UploadsTable = () => {
   const [uploads, setUploads] = useState([]);
@@ -7,6 +8,7 @@ const UploadsTable = () => {
   const [previewData, setPreviewData] = useState(null);
   const [previewFile, setPreviewFile] = useState(null);
   const [error, setError] = useState(null);
+  const [openRow, setOpenRow] = useState(null);
 
   useEffect(() => {
     const fetchUploads = async () => {
@@ -22,7 +24,6 @@ const UploadsTable = () => {
         setLoading(false);
       }
     };
-
     fetchUploads();
   }, []);
 
@@ -37,6 +38,7 @@ const UploadsTable = () => {
       setPreviewFile(null);
     }
   };
+
   const handleDownload = async (filename) => {
     try {
       const response = await axios.get(`/history/download/${filename}`, {
@@ -54,68 +56,75 @@ const UploadsTable = () => {
     }
   };
 
-  if (loading) return <p className="text-gray-400">Loading uploads...</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (loading)
+    return (
+      <p className="text-gray-400 text-center py-8 text-lg animate-pulse">
+        Loading uploads...
+      </p>
+    );
+  if (error)
+    return (
+      <p className="text-red-500 text-center py-8 text-lg font-semibold">
+        {error}
+      </p>
+    );
   if (!uploads.length)
-    return <p className="text-gray-400">No uploads found.</p>;
+    return (
+      <p className="text-gray-400 text-center py-8 text-lg">
+        No uploads found.
+      </p>
+    );
+
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
   return (
-    <div className="mt-10">
-      <h2 className="text-2xl font-bold mb-4 text-gray-200">Uploaded Files</h2>
-      <div className="overflow-x-auto">
-        <table className="w-full text-gray-200 border-collapse border border-gray-600 rounded-lg overflow-hidden">
-          <thead>
-            <tr className="bg-gray-700">
-              <th className="border border-gray-600 px-4 py-2 text-left">
-                Filename
-              </th>
-              <th className="border border-gray-600 px-4 py-2 text-left">
-                Uploaded By
-              </th>
-              <th className="border border-gray-600 px-4 py-2 text-left">
-                Date
-              </th>
-              <th className="border border-gray-600 px-4 py-2 text-left">
-                Chart
-              </th>
-              <th className="border border-gray-600 px-4 py-2 text-center">
-                Actions
-              </th>
+    <div className="bg-gray-800 rounded-3xl px-3 py-8 lg:p-10 shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white text-center">
+        Uploaded Files
+      </h2>
+
+      <div className="hidden xl:block overflow-x-auto rounded-xl border border-gray-700">
+        <table className="min-w-full border-collapse border border-gray-700 rounded-lg overflow-hidden bg-gray-900 text-gray-100">
+          <thead className="bg-gray-800 text-gray-300">
+            <tr>
+              <th className="border border-gray-700 px-6 py-3 text-left">Filename</th>
+              <th className="border border-gray-700 px-6 py-3 text-left">Uploaded By</th>
+              <th className="border border-gray-700 px-6 py-3 text-left">Date</th>
+              <th className="border border-gray-700 px-6 py-3 text-left">Chart</th>
+              <th className="border border-gray-700 px-6 py-3 text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {uploads.map((upload) => (
               <React.Fragment key={upload._id}>
-                <tr className="hover:bg-gray-800">
-                  <td className="border border-gray-600 px-4 py-2">
+                <tr className="hover:bg-gray-800 transition-colors duration-150">
+                  <td className="border-t border-t-gray-700 px-6 py-3 flex items-center">
+                    <FiFileText className="mr-2 text-pink-400" />
                     {upload.fileName}
                   </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {upload.user?.username || "N/A"}
+                  <td className="border border-gray-700 px-6 py-3">
+                    {capitalize(upload.user?.username || "N/A") }
                   </td>
-                  <td className="border border-gray-600 px-4 py-2">
+                  <td className="border border-gray-700 px-6 py-3">
                     {new Date(upload.uploadDate).toLocaleDateString()}
                   </td>
-                  <td className="border border-gray-600 px-4 py-2">
+                  <td className="border border-gray-700 px-6 py-3">
                     {upload.chartType !== "-" ? (
-                      <span>
-                        {upload.chartType} ({upload.selectedAxes?.x} vs{" "}
+                      <span> 
+                        {upload.chartType} ({upload.selectedAxes?.x} vs{" "} 
                         {upload.selectedAxes?.y})
                       </span>
                     ) : (
-                      <span className="text-gray-400 italic">
-                        Not configured
-                      </span>
+                      <span className="text-gray-400 italic">Not configured</span>
                     )}
                   </td>
-                  <td className="border border-gray-600 px-4 py-2 text-center space-x-4">
+                  <td className="border border-gray-700 px-6 py-3 text-center space-x-4">
                     <button
                       className="text-blue-400 hover:text-blue-600 underline"
                       onClick={() => handleDownload(upload.fileName)}
                     >
                       Download
                     </button>
-
                     <button
                       className="text-green-400 hover:text-green-600 underline"
                       onClick={() => handleViewData(upload.fileName)}
@@ -125,7 +134,6 @@ const UploadsTable = () => {
                   </td>
                 </tr>
 
-                {/* Data Preview Row */}
                 {previewFile === upload.fileName && previewData && (
                   <tr>
                     <td
@@ -175,6 +183,102 @@ const UploadsTable = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* For small screens */}
+      <div className="xl:hidden space-y-4">
+        {uploads.map((upload, index) => (
+          <div
+            key={upload._id}
+            className="bg-gray-900 border border-gray-700 rounded sm:rounded-2xl py-3 px-2 sm:p-4 shadow-lg"
+          >
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => setOpenRow(openRow === index ? null : index)}
+            >
+              <div className="flex items-center">
+                <FiFileText className="mr-1 sm:mr-3 text-pink-400" />
+                <span className="text-white text-sm sm:text-md font-semibold truncate">
+                  {upload.fileName}
+                </span>
+              </div>
+              {openRow === index ? (
+                <FiChevronUp className="text-gray-400" />
+              ) : (
+                <FiChevronDown className="text-gray-400" />
+              )}
+            </div>
+
+            {openRow === index && (
+              <div className="mt-3 text-sm text-gray-300 space-y-1 pl-6">
+                <p>
+                  <span className="text-gray-400 ">Uploaded By:</span>{" "}
+                  {capitalize(upload.user?.username || "N/A")}
+                </p>
+                <p>
+                  <span className="text-gray-400">Date:</span>{" "}
+                  {new Date(upload.uploadDate).toLocaleDateString()}
+                </p>
+                <p>
+                  <span className="text-gray-400">Chart:</span>{" "}
+                  {upload.chartType !== "-" ? (
+                    <span>
+                      {upload.chartType} ({upload.selectedAxes?.x} vs{" "}
+                      {upload.selectedAxes?.y})
+                    </span>
+                  ) : (
+                    "Not configured"
+                  )}
+                </p>
+
+                <div className="pt-2 flex space-x-4">
+                  <button
+                    className="flex items-center text-blue-400 hover:text-blue-600 underline"
+                    onClick={() => handleDownload(upload.fileName)}
+                  >
+                    <FiDownload className="mr-1" /> Download
+                  </button>
+                  <button
+                    className="flex items-center text-green-400 hover:text-green-600 underline"
+                    onClick={() => handleViewData(upload.fileName)}
+                  >
+                    <FiEye className="mr-1" /> View
+                  </button>
+                </div>
+
+                {previewFile === upload.fileName && previewData && (
+                  <div className="mt-3 overflow-x-auto">
+                    <h3 className="text-md font-semibold text-gray-300 mb-1">
+                      Preview
+                    </h3>
+                    <table className="min-w-full border border-gray-600 text-xs text-gray-300">
+                      <thead>
+                        <tr className="bg-gray-700">
+                          {previewData.headers.slice(0, 4).map((header, idx) => (
+                            <th key={idx} className="border border-gray-600 px-2 py-1">
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {previewData.rows.slice(0, 3).map((row, rIdx) => (
+                          <tr key={rIdx} className="hover:bg-gray-800">
+                            {row.slice(0, 4).map((cell, cIdx) => (
+                              <td key={cIdx} className="border border-gray-600 px-2 py-1">
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -52,7 +52,6 @@ const DataAnalysis = ({ filename }) => {
 
     setChartData(data);
 
-    // Save chart config
     try {
       await axios.post("/upload/updateChartHistory", {
         fileName: filename,
@@ -64,7 +63,6 @@ const DataAnalysis = ({ filename }) => {
       console.error("Chart save failed", err);
     }
 
-    // Get insights
     setGeneratingInsights(true);
     try {
       const sampleRows = rows.slice(0, 50).map((r) => [r[xi], r[yi]]);

@@ -23,6 +23,25 @@ const Layout = () => {
     navigate("/login");
   };
 
+
+  const NavItem = ({ to, icon, label, role }) => (
+    <NavLink
+      to={to}
+      onClick={() => setSidebarOpen(false)}
+      className={({ isActive }) =>
+        `flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${isActive
+          ? `${role === "admin" ? "bg-purple-600" : "bg-pink-600"
+          } text-white font-semibold shadow-md`
+          : "text-slate-400 hover:bg-slate-800 hover:text-white"
+        }`
+      }
+    >
+      {icon && <span className="mr-4 text-xl">{icon}</span>}
+      <span>{label}</span>
+    </NavLink>
+  );
+
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -39,12 +58,13 @@ const Layout = () => {
     return currentRole === "admin" ? "purple-500" : "pink-500";
   };
 
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
   return (
     <div className="flex h-screen bg-slate-950 text-slate-200">
       <aside
-        className={`fixed z-40 inset-y-0 left-0 w-64 bg-slate-900 shadow-xl transform ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto`}
+        className={`fixed z-40 inset-y-0 left-0 w-64 bg-slate-900 shadow-xl transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto`}
       >
         <div className="p-6 border-b border-slate-800 flex items-center justify-between">
           <Link
@@ -115,7 +135,7 @@ const Layout = () => {
         <div className="absolute bottom-0 left-0 w-full p-4 border-t border-slate-800">
           <button
             onClick={handleLogout}
-            className="flex items-center w-full px-4 py-3 text-red-400 hover:bg-slate-800 rounded-lg transition-colors duration-200"
+            className="flex items-center w-full px-4 py-3 text-red-400 hover:bg-red-800 rounded-lg transition-colors duration-200"
           >
             <FiLogOut className="mr-3 text-xl" />
             <span className="font-medium">Logout</span>
@@ -143,14 +163,14 @@ const Layout = () => {
           </h1>
           <div className="flex items-center space-x-4 gap-2">
             Welcome,
-            <span className="text-slate-300">{user ? user : "Loading..."}</span>
+            <span className="text-red-400">{user ? capitalize(user) : "Loading..."}</span>
             <Link to="/profile">
               <FaRegUserCircle size={28} className="text-slate-400" />
             </Link>
           </div>
         </header>
 
-        <main className={`flex-1 overflow-y-auto p-6 lg:p-10 bg-slate-900} `}>
+        <main className={`flex-1 overflow-y-auto md:p-6 lg:p-10 bg-slate-900} `}>
           <Outlet />
         </main>
       </div>
@@ -158,22 +178,7 @@ const Layout = () => {
   );
 };
 
+
+
 export default Layout;
 
-const NavItem = ({ to, icon, label, role }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) =>
-      `flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
-        isActive
-          ? `${
-              role === "admin" ? "bg-purple-600" : "bg-pink-600"
-            } text-white font-semibold shadow-md`
-          : "text-slate-400 hover:bg-slate-800 hover:text-white"
-      }`
-    }
-  >
-    {icon && <span className="mr-4 text-xl">{icon}</span>}
-    <span>{label}</span>
-  </NavLink>
-);
